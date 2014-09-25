@@ -1,4 +1,4 @@
-var coffee = require('coffee-script').register()
+var coffee = require('coffee-script').register();
 var debug = require('debug')('catchy');
 var express = require('express');
 var path = require('path');
