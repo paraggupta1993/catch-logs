@@ -11,9 +11,15 @@ Install the required packages:
 npm install
 ```
 
-Start the server:
+Start the server: [Production]
 ```
 coffee modules/server.coffee <log_filename>
+```
+
+Start the server: [Development]
+Better start it with nodemon
+```
+nodemon modules/server.coffee <log_filename>
 ```
 
 Check your logs real-time at:
