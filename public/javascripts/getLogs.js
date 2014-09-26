@@ -37,7 +37,7 @@
     });
   };
 
-  var handleKeyDown = function(key){
+  var handleKeyUp = function(key){
     switch(parseInt(key.which,10)){
       case 71:// Press 'g' or 'G' to clear the logs
       case 103:
@@ -63,7 +63,7 @@
     bindEvents();
 
     // Binding Shortcuts
-    $(document).keydown(handleKeyDown);
+    $(document).keyup(handleKeyUp);
 
     // Binding Socket Events
     setupSocketListeners(socket);
