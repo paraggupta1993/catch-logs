@@ -39,3 +39,11 @@ firefox localhost:4000/
 * Add colors to log
 * Search functionality
 * Support for multiplt sources of log files.
+
+
+####Contributors:
+
+[Parag Gupta](https://github.com/paraggupta1993)
+
+#### Special Thanks to :
+[Frontail](https://github.com/mthenw/frontail) : From which tail.js is borrowed.

@@ -1,5 +1,5 @@
 {app, server} = require('../app');
-Tail          = require('tail').Tail
+tail          = require('./tail');
 io            = require('socket.io')(server);
 
 main = ()->
@@ -8,9 +8,10 @@ main = ()->
   fromBeginning = false
   watchOptions  = {}  #as per node fs.watch documentations
 
-  tail = new Tail(fileToTail, lineSeparator, watchOptions,fromBeginning)
+  # tail = new Tail(fileToTail, lineSeparator, watchOptions,fromBeginning)
+  tailer = tail(fileToTail);
 
-  tail.on 'line', (data) =>
+  tailer.on 'line', (data) =>
     console.log data
     io.sockets.emit 'new-data',
       channel: 'stdout'
@@ -22,6 +23,9 @@ main = ()->
     socket.emit 'new-data',
       channel: 'stdout'
       value: "tail file #{fileToTail}"
+
+    tailer.getBuffer().forEach (line)->
+      socket.emit('line', line);
 
     socket.on 'disconnect', ()->
       console.log('a user disconnected')

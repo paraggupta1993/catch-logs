@@ -16,8 +16,8 @@
     "jade": "~1.3.0",
     "stylus": "0.42.3",
     "socket.io": "latest",
-    "tail": "latest",
-    "coffee-script": "latest"
+    "coffee-script": "latest",
+    "CBuffer": "0.1.4"
   }
 }
 
