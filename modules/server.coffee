@@ -10,16 +10,21 @@ main = ()->
 
   tail = new Tail(fileToTail, lineSeparator, watchOptions,fromBeginning)
 
-  io.on 'connection', (socket) ->
-    console.log('a user connected');
-    socket.emit 'new-data',
-        channel: 'stdout'
-        value: "tail file #{fileToTail}"
-
-  tail.on 'line', (data) ->
+  tail.on 'line', (data) =>
     console.log data
-    io.emit 'new-data',
+    io.sockets.emit 'new-data',
       channel: 'stdout'
       value: data
+
+  io.on 'connection', (socket) =>
+    console.log('a user connected');
+
+    socket.emit 'new-data',
+      channel: 'stdout'
+      value: "tail file #{fileToTail}"
+
+    socket.on 'disconnect', ()->
+      console.log('a user disconnected')
+      socket.disconnect()
 
 main()
