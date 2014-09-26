@@ -27,6 +27,11 @@ Check your logs real-time at:
 firefox localhost:4000/
 ```
 
+Logger for testing : Use this command in different tab for testing
+```
+while true; do echo $sec >> "<log_filename>"; sleep 1; sec=$(($sec + 1)); done
+```
+
 ####Features:
 
 * Dumps the file logs into the browser real-time using Tail and socket.io.
@@ -39,7 +44,12 @@ firefox localhost:4000/
 * Add colors to log
 * Search functionality
 * Support for multiplt sources of log files.
+* Auto-Scroll
+* Adding at the top
 
+#### Known Bugs:
+
+* Indentation not preserved of the logs.
 
 ####Contributors:
 
