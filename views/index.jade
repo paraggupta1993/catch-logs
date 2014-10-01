@@ -1,8 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  button.clearLogBtn= 'Clear Logs'
-  .searchWidget
-    input#regex
+  .header
+    h1= title
+    button.clearLogBtn= 'Clear Logs'
+    .searchWidget
+      input#regex
+    div AutoScroll
+      input(type='checkbox', id='autoScroll', name='autoScroll', value='autoScroll', checked)
   .container.logs

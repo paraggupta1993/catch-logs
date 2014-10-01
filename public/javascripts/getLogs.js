@@ -1,23 +1,34 @@
 (function(){
   var PORT = 4000;
-  var terminateEvent = function(event){
-    if(event.stopPropagation)
-      event.stopPropagation();   // Stops Bubbling up to Ancestor elements
-    if(event.preventDefault)
-      event.preventDefault();    // Stops the default action Eg : Redirecting to a "href" for anchor element
-    return false;
-  };
+  var container = $('.container.logs');
+  var regexContainer = $('#regex');
+  var clearBtn = $('.clearLogBtn');
+  var bodyElement = $('body')[0];
+  var allVisible = true;
+  var autoScroll = true;
 
   var bindEvents = function(){
-    $('.clearLogBtn').click(function(e){
-      $('.container.logs').empty();
+    $('#autoScroll').click(function() {
+      var $this = $(this);
+      if ($this.is(':checked')) {
+        autoScroll = true;
+      } else {
+        autoScroll = false;
+      }
     });
 
-    $('#regex').keyup(function(e){
+    clearBtn.click(function(e){
+      container.empty();
+    });
+
+    regexContainer.keyup(function(e){
       var searchVal = $(e.target).val();
-      if(searchVal == '') {
+      if(searchVal === '') {
         console.log('empty search');
-        $('.log_line').show();
+        if(!allVisible){
+          $('.log_line').show();
+          allVisible = true;
+        }
       }
       else {
         re = new RegExp(searchVal);
@@ -30,6 +41,7 @@
           }
           else{
             $(log).hide();
+            allVisible = false;
           }
         });
       }
@@ -41,21 +53,34 @@
     switch(parseInt(key.which,10)){
       case 71:// Press 'g' or 'G' to clear the logs
       case 103:
-        $('.container.logs').empty();
+        container.empty();
         break;
       default:
         break;
     }
   };
 
-  var setupSocketListeners = function(socket){
-    var container = $('.container.logs');
+  var autoScrollToBottom = function(){
+    bodyElement.scrollTop = bodyElement.scrollHeight;
+  };
 
+  // var isUserScrolled = function(){
+  //   return bodyElement.scrollTop != bodyElement.scrollHeight;
+  // };
+
+  var addItem = function(data){
+    // if(isUserScrolled()){
+    //   autoScroll = false;
+    // }
+    var container = $('.container.logs');
+    var newItem = $('<div class="log_line">' + data.value + '</div>');
+    container.append(newItem);
+    if(autoScroll)autoScrollToBottom();
+  };
+
+  var setupSocketListeners = function(socket){
     // Appends new-data into the container
-    socket.on('new-data', function(data){
-      var newItem = $('<div class="log_line">' + data.value + '</div>');
-      container.append(newItem);
-    });
+    socket.on('new-data', addItem);
   };
 
   var main = function(socket){
@@ -67,11 +92,14 @@
 
     // Binding Socket Events
     setupSocketListeners(socket);
-
   };
 
   $(document).ready(function(){
     var socket = io.connect('http://localhost:'+PORT);
+    container = $('.container.logs');
+    regexContainer = $('#regex');
+    clearBtn = $('.clearLogBtn');
+    bodyElement = $('body')[0];
     main(socket);
   });
 })();

@@ -5,7 +5,9 @@ body {
 a {
   color: #00b7ff;
 }
-
 .log_line {
   white-space: pre;
+}
+header {
+  position: fixed;
 }

@@ -17,8 +17,7 @@
     "stylus": "0.42.3",
     "socket.io": "latest",
     "coffee-script": "latest",
-    "CBuffer": "0.1.4"
+    "CBuffer": "0.1.4",
+    "underscore": "1.7.0"
   }
 }
-
-
