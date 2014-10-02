@@ -2,7 +2,6 @@
   "name": "catchy",
   "version": "0.0.1",
   "description": "Catchy provides broswer-interface for real-time logs.",
-  "private": true,
   "scripts": {
     "start": "nodemon ./modules/server.coffee"
   },

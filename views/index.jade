@@ -1,11 +1,21 @@
 extends layout
 
 block content
-  .header
-    h1= title
-    button.clearLogBtn= 'Clear Logs'
-    .searchWidget
-      input#regex
-    div AutoScroll
-      input(type='checkbox', id='autoScroll', name='autoScroll', value='autoScroll', checked)
+  .header-fixed
+    .header-content
+      ul.menu
+        li
+          h3= title
+      br
+      ul.menu
+        li
+          .searchWidget
+            input#regex(placeholder="Search")
+        li
+          div.autoScroll
+            input(type='checkbox', id='autoScroll', name='autoScroll', value='autoScroll', checked)
+            label(for='autoScroll') AutoScroll
+        li.clearLogLi
+          button.clearLogBtn= 'Clear Logs'
+
   .container.logs

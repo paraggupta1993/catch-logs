@@ -1,13 +1,88 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #000;
+  padding: 5px;
+  font: 18px "Courier", Monospace, Arial, sans-serif;
+  color: #fff;
 }
-a {
-  color: #00b7ff;
+.header-fixed {
+  position: fixed;
+  top: 0;
+  margin: auto;
+  z-index: 100000;
+  width: 100%;
+  background-color: #000;
+}
+.header-content {
+  margin: 5px;
+  padding: 5px;
+}
+.container {
+  top: 100px;
+  margin: 5px;
+  padding: 5px;
+  z-index: 0;
 }
 .log_line {
   white-space: pre;
 }
-header {
-  position: fixed;
+#regex {
+  font: 18px "Courier", Monospace, Arial, sans-serif;
+  padding-left: 10px;
+  background-color: #666;
+  border: solid 1px #333;
+  color: #fff;
+  width: 100%;
+  box-shadow: inset 1px 1px 1px #666;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+#regex:focus {
+  outline-style: none;
+  padding-left: 10px;
+}
+.menu {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+.menu li {
+  display: inline-block;
+  margin-right: 20px;
+}
+div.autoScroll {
+  color: #000;
+  background-color: #7fff00;
+  font-size: 18px;
+  padding: 2px 6px 3px;
+  border-radius: 10px;
+  border: 2px outset buttonface;
+  box-sizing: border-box;
+}
+button.clearLogBtn {
+  color: #000;
+  background-color: #7fff00;
+  font-size: 18px;
+  border-radius: 10px;
+}
+.logs .log_line:nth-child(odd) {
+  background-color: #000;
+}
+.logs .log_line:nth-child(even) {
+  background-color: #333;
+}
+input[type=checkbox] + label {
+  font-style: italic;
+  color: #ccc;
+}
+input[type=checkbox]:checked + label {
+  font-style: normal;
+  color: #000;
+}
+a {
+  color: #00b7ff;
+}
+h3 {
+  margin-bottom: 0px;
 }

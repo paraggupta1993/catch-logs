@@ -12,45 +12,43 @@
       autoScroll: true,
 
       bindEvents: function(){
-        $('#autoScroll').click(function() {
-          var $this = $(this);
-          if ($this.is(':checked')) {
+        $('#autoScroll').click(_.bind(function(e){
+          if ($(e.target).is(':checked')){
             this.autoScroll = true;
           } else {
             this.autoScroll = false;
           }
-        });
+        }, this));
 
-        this.clearBtn.click(function(e){
+        this.clearBtn.click(_.bind(function(e){
           this.container.empty();
-        });
+        }, this));
 
-        this.regexContainer.keyup(function(e){
+        this.regexContainer.keyup(_.bind(function(e){
           var searchVal = $(e.target).val();
           if(searchVal === '') {
-            console.log('empty search');
             if(!this.allVisible){
               $('.log_line').show(); //OPTIMIZE
               this.allVisible = true;
             }
           }
           else {
-            re = new RegExp(searchVal);
-            $('.log_line').each(function(index, log){
-              match = re.exec(log.innerHTML);
-              if(match){
-                //Add divs to make the matched part of different color
-                //console.log(match.index + match.length);
-                $(log).show();
-              }
-              else{
-                $(log).hide();
-                this.allVisible = false;
-              }
-            });
+            this.filter( $('.log_line'), new RegExp(searchVal) );
           }
           if(e.stopPropagation) e.stopPropagation();   // Stops Bubbling up to Ancestor elements
-        });
+        }, this));
+      },
+      filter: function($logs, re){
+        $logs.each(_.bind(function(index, log){
+            match = re.exec(log.innerHTML);
+            if(match){
+              $(log).show(); //Add divs to make the matched part of different color
+            }
+            else{
+              $(log).hide();
+              this.allVisible = false;
+            }
+          }, this));
       },
       handleKeyUp: function(key){
         switch(parseInt(key.which,10)){
@@ -63,9 +61,13 @@
         }
       },
       autoScrollToBottom: function(){
-        this.bodyElement.scrollTop = this.bodyElement.scrollHeight;
+        if(this.autoScroll)
+          this.bodyElement.scrollTop = this.bodyElement.scrollHeight;
       },
+
       addItem: function(data){
+
+        // Adding based on indentation
         if(data.value[0] == ' '){
           this.lastItem.text(this.lastItem.text() + '\n' + data.value);
         }
@@ -73,7 +75,15 @@
           newItem = $('<div class="log_line">' + data.value + '</div>');
           this.lastItem = newItem.appendTo(this.container);
         }
-        if(this.autoScroll) this.autoScrollToBottom();
+
+        //Filtering out on search
+        searchVal = $('#regex').val();
+        if(searchVal !== '') {
+          this.filter(this.lastItem, new RegExp(searchVal));
+        }
+
+        // Auto scrolling
+        this.autoScrollToBottom();
       },
       setupSocketListeners: function(socket){
         // Appends new-data into the container
