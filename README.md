@@ -35,19 +35,20 @@ while true; do echo $sec >> "<log_filename>"; sleep 1; sec=$(($sec + 1)); done
 
 ####Features:
 
-* Dumps the file logs into the browser real-time using socket.io.
+* Dumps the file into the browser real-time using socket.io.
 * Clear logs from the UI using `Clear Log` button or shortcut `g` or `G`.
 * Regex Search through the logs.
 * AutoScroll to latest log.
+* AutoClear logs whenever server restarts. Works great with nodemon.
 
 ####Todo:
 
-* Thorough testing: unit and integration.
-* Make lines Collapsable.
 * Make it a npm package.
-* Optimize on search: (show and hide) logic.
 * Take care of the terminal Ansi-Colors coming as part of the logs. Convert them to CSS colors.
+* Thorough testing: unit and integration.
 * User-define filters for coloring: Example = `Exception:` - Red like bootstrap.
+* Make lines Collapsable.
+* Optimize on search: (show and hide) logic.
 * Case insensitive search option.
 * Fuzzy Search option.
 * Multiple sources of log files.

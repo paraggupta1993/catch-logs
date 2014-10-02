@@ -11,6 +11,9 @@
       allVisible: true,
       autoScroll: true,
 
+      clearLogs: function(){
+          this.container.empty();
+      },
       bindEvents: function(){
         $('#autoScroll').click(_.bind(function(e){
           if ($(e.target).is(':checked')){
@@ -20,9 +23,7 @@
           }
         }, this));
 
-        this.clearBtn.click(_.bind(function(e){
-          this.container.empty();
-        }, this));
+        this.clearBtn.click(this.clearLogs);
 
         this.regexContainer.keyup(_.bind(function(e){
           var searchVal = $(e.target).val();
@@ -50,11 +51,13 @@
             }
           }, this));
       },
+
+      //ShortCut-Keys
       handleKeyUp: function(key){
         switch(parseInt(key.which,10)){
           case 71:// Press 'g' or 'G' to clear the logs
           case 103:
-            this.container.empty();
+            this.clearLogs();
             break;
           default:
             break;
@@ -87,6 +90,7 @@
       },
       handleFilename: function(data){
         $('div.filename').text('Tailing: ' + data.value);
+        this.clearLogs();
       },
       setupSocketListeners: function(){
         // Appends new-data into the container
@@ -110,7 +114,7 @@
   $(document).ready(function(){
     var socket = io.connect('http://localhost:'+PORT);
     myapp = new App(socket);
-    _.bindAll(myapp, 'addItem', 'autoScrollToBottom', 'handleKeyUp');
+    _.bindAll(myapp, 'addItem', 'autoScrollToBottom', 'handleKeyUp', 'handleFilename', 'clearLogs');
     myapp.main();
   });
 })();
