@@ -85,9 +85,13 @@
         // Auto scrolling
         this.autoScrollToBottom();
       },
-      setupSocketListeners: function(socket){
+      handleFilename: function(data){
+        $('div.filename').text('Tailing: ' + data.value);
+      },
+      setupSocketListeners: function(){
         // Appends new-data into the container
-        socket.on('new-data', this.addItem);
+        this.socket.on('new-data', this.addItem);
+        this.socket.on('filename', this.handleFilename);
       },
       main: function(){
         // Binding Events
@@ -97,7 +101,7 @@
         $(document).keyup(this.handleKeyUp);
 
         // Binding Socket Events
-        this.setupSocketListeners(this.socket);
+        this.setupSocketListeners();
         this.lastItem = $('<div class="log_line"></div>').appendTo(this.container);
       }
     };

@@ -35,24 +35,23 @@ while true; do echo $sec >> "<log_filename>"; sleep 1; sec=$(($sec + 1)); done
 
 ####Features:
 
-* Dumps the file logs into the browser real-time using Tail and socket.io.
+* Dumps the file logs into the browser real-time using socket.io.
 * Clear logs from the UI using `Clear Log` button or shortcut `g` or `G`.
 * Regex Search through the logs.
+* AutoScroll to latest log.
 
 ####Todo:
 
-* Apply current regex on new incoming logs.
-* Detect multiple line of logs as One chunk based on indentation. Example : Json. And table-strip them accordingly. And then apply the filters. Idea: Just detect one white-space at the beginning of the line and put it in the previous basket, else make a new basket.
-* Collapse the lines.
-* Use Underscore.
-* Make it a npm package
-* Optimize on search/show and hide.
-* Add sytactic-colors to log
-* Thorough testing: unit and integration
-* Case insensitive search option
+* Thorough testing: unit and integration.
+* Make lines Collapsable.
+* Make it a npm package.
+* Optimize on search: (show and hide) logic.
+* Take care of the terminal Ansi-Colors coming as part of the logs. Convert them to CSS colors.
+* User-define filters for coloring: Example = `Exception:` - Red like bootstrap.
+* Case insensitive search option.
+* Fuzzy Search option.
 * Multiple sources of log files.
-* Pre-define filters for coloring: Example = `Exception:` - Red like bootstrap.
-* Adding at the top
+* Multi-language support.
 
 ####Contributors:
 
@@ -71,4 +70,3 @@ while true; do echo $sec >> "<log_filename>"; sleep 1; sec=$(($sec + 1)); done
 [Socket.io]()
 [Coffee-script]()
 [CBuffer]()
-

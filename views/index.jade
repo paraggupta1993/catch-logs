@@ -5,17 +5,25 @@ block content
     .header-content
       ul.menu
         li
-          h3= title
-      br
-      ul.menu
-        li
           .searchWidget
             input#regex(placeholder="Search")
+
         li
           div.autoScroll
             input(type='checkbox', id='autoScroll', name='autoScroll', value='autoScroll', checked)
             label(for='autoScroll') AutoScroll
+
         li.clearLogLi
           button.clearLogBtn= 'Clear Logs'
+
+      ul.menu.info
+        li.filename.floatleft
+          div.filename
+
+        li#appName.floatright
+          div= 'Catchy'
+
+        li.floatright
+          img#github_icon(src='/images/github_icon.png')
 
   .container.logs
