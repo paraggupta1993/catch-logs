@@ -40,11 +40,11 @@ while true; do echo $sec >> "<log_filename>"; sleep 1; sec=$(($sec + 1)); done
 * Regex Search through the logs.
 * AutoScroll to latest log.
 * AutoClear logs whenever server restarts. Works great with nodemon.
+* Take care of the terminal Ansi-Colors coming as part of the logs. Convert them to CSS colors.
 
 ####Todo:
 
 * Make it a npm package.
-* Take care of the terminal Ansi-Colors coming as part of the logs. Convert them to CSS colors.
 * Thorough testing: unit and integration.
 * User-define filters for coloring: Example = `Exception:` - Red like bootstrap.
 * Make lines Collapsable.

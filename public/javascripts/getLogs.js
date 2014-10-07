@@ -72,10 +72,10 @@
 
         // Adding based on indentation
         if(data.value[0] == ' '){
-          this.lastItem.text(this.lastItem.text() + '\n' + data.value);
+          this.lastItem.html(this.lastItem.html() + '\n' + ansi2html(data.value));
         }
         else{
-          newItem = $('<div class="log_line">' + data.value + '</div>');
+          newItem = $('<div class="log_line">' + ansi2html(data.value) + '</div>');
           this.lastItem = newItem.appendTo(this.container);
         }
 
