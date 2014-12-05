@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Catchy: The Real-Time Logger' });
+  res.render('index', { title: 'Catch-Logs: The Real-Time Log analysis' });
 });
 
 module.exports = router;

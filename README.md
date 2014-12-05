@@ -1,4 +1,4 @@
-## Catchy
+## Catch-Logs
 ### Browser-interface to your real time logs
 
 Clone the Repository:

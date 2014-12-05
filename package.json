@@ -1,7 +1,7 @@
 {
-  "name": "catchy",
+  "name": "catch-logs",
   "version": "0.0.1",
-  "description": "Catchy provides broswer-interface for real-time logs.",
+  "description": "Catch-Logs provides broswer-interface for real-time logs.",
   "author": "Parag Gupta",
   "license": "MIT",
   "scripts": {
