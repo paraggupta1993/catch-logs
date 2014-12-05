@@ -11,15 +11,22 @@ Install the required packages:
 npm install
 ```
 
+Configure the log filename (Make changes in `config.json`):
+```
+{
+  "log_filename": "Your filename goes here"
+}
+```
+
 Start the server: [Production]
 ```
-coffee modules/server.coffee <log_filename>
+npm start
 ```
 
 Start the server: [Development]
 Better start it with nodemon
 ```
-nodemon modules/server.coffee <log_filename>
+nodemon modules/server.coffee
 ```
 
 Check your logs real-time at:

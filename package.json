@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Catchy provides broswer-interface for real-time logs.",
   "scripts": {
-    "start": "nodemon ./modules/server.coffee"
+    "start": "coffee ./modules/server.coffee"
   },
   "dependencies": {
     "express": "~4.2.0",

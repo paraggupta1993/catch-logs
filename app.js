@@ -60,12 +60,6 @@ app.use(function(err, req, res, next) {
 
 app.set('port', process.env.PORT || 4000);
 
-console.log(process.argv[2]);
-if(process.argv[2] === undefined){
-    console.log("Usage: " + process.argv[0] + ' ' + process.argv[1] + ' <log_filename>');
-    process.exit(1);
-}
-
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
 });
