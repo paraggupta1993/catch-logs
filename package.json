@@ -2,9 +2,17 @@
   "name": "catchy",
   "version": "0.0.1",
   "description": "Catchy provides broswer-interface for real-time logs.",
+  "author": "Parag Gupta",
+  "license": "MIT",
   "scripts": {
     "start": "coffee ./modules/server.coffee"
   },
+  "keywords": [
+    "Logger",
+    "broswer-interface",
+    "tail",
+    "search"
+  ],
   "dependencies": {
     "express": "~4.2.0",
     "static-favicon": "~1.0.0",
