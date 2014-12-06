@@ -1,11 +1,15 @@
 {
   "name": "catch-logs",
   "version": "0.0.1",
-  "description": "Catch-Logs provides broswer-interface for real-time logs.",
-  "author": "Parag Gupta",
+  "description": "Catch-Logs provides broswer-interface to analyse real-time logs.",
+  "author": "Parag Gupta <paraggupta1993@gmail.com> (http://paraggupta1993.github.io/)",
   "license": "MIT",
   "scripts": {
     "start": "coffee ./modules/server.coffee"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/paraggupta1993/catch-logs.git"
   },
   "keywords": [
     "Logger",

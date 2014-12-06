@@ -6,41 +6,52 @@ Clone the Repository:
 git clone <repo>
 ```
 
-Install the required packages:
+[Install Node.js](http://nodejs.org/download/) if you dont have it.
+
+Go into the application:
+```
+cd catch-logs
+```
+
+Install the required packages: (Npm comes with Node.js)
 ```
 npm install
 ```
 
-Configure the log filename (Make changes in `config.json`):
+Configure the log filename which you want to watch (Make changes in `config.json`):
 ```
 {
   "log_filename": "Your filename goes here"
 }
 ```
 
-Start the server: [Production]
+Start the server:
 ```
 npm start
 ```
 
-Start the server: [Development]
-Better start it with nodemon
-```
-nodemon modules/server.coffee
-```
 
-Check your logs real-time at:
+Analyse your logs real-time at:
 ```
 firefox localhost:4000/
 ```
 
-Logger for testing : Use this command in different tab for testing
+
+#### Development :
+
+Better start the server with nodemon, so that server automatically restart if any changes are made to the source files.
+```
+nodemon modules/server.coffee
+```
+
+#### Testing :
+Logger : Use this command in different tab for testing
 ```
 sec=0
 while true; do echo $sec >> "<log_filename>"; sleep 1; sec=$(($sec + 1)); done
 ```
 
-####Features:
+###Features:
 
 * Dumps the file into the browser real-time using socket.io.
 * Clear logs from the UI using `Clear Log` button or shortcut `g` or `G`.
@@ -49,7 +60,7 @@ while true; do echo $sec >> "<log_filename>"; sleep 1; sec=$(($sec + 1)); done
 * AutoClear logs whenever server restarts. Works great with nodemon.
 * Take care of the terminal Ansi-Colors coming as part of the logs. Convert them to CSS colors.
 
-####Todo:
+###Todo:
 
 * Make it a npm package.
 * Thorough testing: unit and integration.
@@ -73,7 +84,7 @@ while true; do echo $sec >> "<log_filename>"; sleep 1; sec=$(($sec + 1)); done
 [Body-parser]()
 [Debug]()
 [Jade]()
-[Frontail](https://github.com/mthenw/frontail) : From which tail.js is borrowed.
+[Frontail](https://github.com/mthenw/frontail)
 [Stylus]()
 [Socket.io]()
 [Coffee-script]()
