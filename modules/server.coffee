@@ -23,7 +23,7 @@ main = ()->
 
   # Accept a connection
   io.on 'connection', (socket) =>
-    console.log('a user connected');
+    console.log('A client connected');
 
     socket.emit 'filename',
       channel: 'stdout'
@@ -33,7 +33,7 @@ main = ()->
       socket.emit('new-data', line);
 
     socket.on 'disconnect', ()->
-      console.log('a user disconnected')
+      console.log('A client disconnected')
       socket.disconnect()
 
 main()
