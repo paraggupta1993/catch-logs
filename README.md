@@ -62,12 +62,11 @@ while true; do echo $sec >> "<log_filename>"; sleep 1; sec=$(($sec + 1)); done
 
 ###Todo:
 
-* Make it a npm package.
-* Thorough testing: unit and integration.
 * User-define filters for coloring: Example = `Exception:` - Red like bootstrap.
 * Make lines Collapsable.
-* Optimize on search: (show and hide) logic.
 * Case insensitive search option.
+* Optimize on search: (show and hide) logic.
+* Thorough testing: unit and integration.
 * Fuzzy Search option.
 * Multiple sources of log files.
 * Multi-language support.
